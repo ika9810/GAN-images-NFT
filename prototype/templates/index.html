@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello, world!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/prototype.css') }}">
+    <script type="text/javascript">
+        function showClock(){
+          var currentDate = new Date();
+          var divClock = document.getElementById('divClock');
+          var msg = "현재 시간 : ";
+          if(currentDate.getHours()>12){      //시간이 12보다 크다면 오후 아니면 오전
+            msg += "오후 ";
+            msg += currentDate.getHours()-12+"시 ";
+         }
+         else {
+           msg += "오전 ";
+           msg += currentDate.getHours()+"시 ";
+         }
+   
+          msg += currentDate.getMinutes()+"분 ";
+          msg += currentDate.getSeconds()+"초";
+   
+          divClock.innerText = msg;
+   
+          if (currentDate.getMinutes()>58) {    //정각 1분전부터 빨강색으로 출력
+            divClock.style.color="black";
+          }
+          setTimeout(showClock,1000);  //1초마다 갱신
+        }
+        document.write(Math.random() * 99 + 1 + '<h2>');
+      </script>
+</head>
+<body onload="showClock()">
+    <div id="divClock" class="clock">
+ 
+    </div>
+    <h1>일일 커밋</h1>
+    <h1 href="https://jongheon-projects.notion.site/GAN-image-NFT-e5d96c40e41d4c368868c3a10c0231e6">노션으로 이동하기</h1>
+    
+    <script src="{{ url_for('static', filename='js/prototype.js') }}"></script>
+  </body>
+</html>
