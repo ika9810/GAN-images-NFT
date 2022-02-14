@@ -13,3 +13,12 @@ for i in range(len(keyword_list)):
 keyword = "Emilia"
 url = os.getcwd() + '/downloads/'+ keyword+ '/'
 print(res_list[0].split(url)[1])
+def readAndwriteDB():
+    file = open( os.getcwd() + '/prototype/static/number_db.txt','r')
+    x = file.read()
+    file = open( os.getcwd() + '/prototype/static/number_db.txt','w')
+    #TypeError: write() argument must be str, not int 라는 에러 때문에
+    file.write(str(int(x)+1))
+    file.close()
+    print(x, type(x))
+readAndwriteDB()
