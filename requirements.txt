@@ -5,3 +5,4 @@ gunicorn==19.7.1
 itsdangerous==0.24
 Jinja2==2.11.2
 requests==2.24.0
+pinatapy-vourhey==0.1.3
