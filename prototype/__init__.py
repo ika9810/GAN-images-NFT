@@ -173,12 +173,6 @@ def intro():
         arguments = {"keywords":keyword_list[i], "limit":2, "print_urls":True}
         paths = response.download(arguments)
     return render_template('index.html')
-
-@app.route("/db")
-def db():
-    number += 1
-    return number
-
 @app.route("/getImage")
 def getImage():
     response = google_images_download.googleimagesdownload()
