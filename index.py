@@ -166,7 +166,7 @@ def Main():
     result_list = []
     style_path_dir = os.getcwd() + '/prototype/static/style/'
     for keyword in keyword_list:
-        arguments = {"keywords":keyword, "limit":1, "print_urls":True}
+        arguments = {"keywords":keyword, "limit":5, "print_urls":True}
         #이미지 다운 완료 path 
         paths = response.download(arguments)
         #2.DeepAI의 Neural Style API를 통해 AI 미술작품 생성 
@@ -235,14 +235,6 @@ def Main():
             post_slack_message("#gan-image-nft","https://github.com/ika9810/GAN-images-NFT/tree/main/results/" + dir.split('/results/')[1])
     return "Success"
 Main()
-# schedule.every(1).minutes.do(Main) #30분마다 실행
-# # schedule.every().monday.at("00:10").do(printhello) #월요일 00:10분에 실행
-# # schedule.every().day.at("10:30").do(job) #매일 10시30분에 
-# #https://tre2man.tistory.com/188
-# #실제 실행하게 하는 코드
-# while True:
-#     schedule.run_pending()
-#     time.sleep(1)
 #https://m.blog.naver.com/shino1025/221432633410
 #crontab
 #slack bot
