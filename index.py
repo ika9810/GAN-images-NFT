@@ -1,7 +1,5 @@
 import datetime
 import time
-from pip import main
-
 import requests
 import random
 import shutil
