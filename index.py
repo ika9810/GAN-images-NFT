@@ -7,14 +7,19 @@ import random
 import shutil
 import re
 import os
+import json
 from google_images_download import google_images_download
 from pinatapy import PinataPy
 
 import time
 import schedule
 
+def readSlackAPIKEY():
+    with open('/home/opc/GAN-images-NFT/keys/slack-api-key.json', 'r') as f:
+        json_data = json.load(f)
+    return json_data['GAN-API-KEY']
 def post_slack_message(channel, text):
-    myToken = "xoxb-1585926458247-3128170600080-YWdKnEkmFiYXIviJhwAcCNyJ"
+    myToken = readSlackAPIKEY()
     response = requests.post("https://slack.com/api/chat.postMessage",
         headers={"Authorization": "Bearer " + myToken},
         data={"channel": channel,"text": text}
