@@ -12,7 +12,15 @@ from pinatapy import PinataPy
 
 import time
 import schedule
- 
+
+def post_slack_message(channel, text):
+    myToken = "xoxb-1585926458247-3128170600080-YWdKnEkmFiYXIviJhwAcCNyJ"
+    response = requests.post("https://slack.com/api/chat.postMessage",
+        headers={"Authorization": "Bearer " + myToken},
+        data={"channel": channel,"text": text}
+    )
+    print(response.json())
+
 def readAndwriteDB():
     #파일을 읽기 모드로 연다
     file = open( os.getcwd() + '/prototype/static/number_db.txt','r')
@@ -220,8 +228,10 @@ def Main():
             with open(dir + '/result.md', 'w') as result_file:    # hello.txt 파일을 쓰기 모드(w)로 열기
                 result_file.writelines(lines)
             result_file.close()
+            #
+            post_slack_message("#gan-image-nft","https://github.com/ika9810/GAN-images-NFT/tree/main/results/" + dir.split('/results/')[1])
     return "Success"
-
+Main()
 # schedule.every(1).minutes.do(Main) #30분마다 실행
 # # schedule.every().monday.at("00:10").do(printhello) #월요일 00:10분에 실행
 # # schedule.every().day.at("10:30").do(job) #매일 10시30분에 
